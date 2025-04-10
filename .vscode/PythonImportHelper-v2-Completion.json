@@ -1,0 +1,11 @@
+[
+    {
+        "label": "rental",
+        "kind": 5,
+        "importPath": "rental",
+        "description": "rental",
+        "peekOfCode": "rental = []\nwhile True: \n    person = input(\"Enter the rental number or type 'DONE' to finsih\")\n    lower()",
+        "detail": "rental",
+        "documentation": {}
+    }
+]
