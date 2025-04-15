@@ -29,3 +29,20 @@ def register_rental():
     rentals.append(rental)
     print(f"Rental {rental['rental_no']} registered successfully!")
 
+def register_tenant():
+    print("\nRegister New Tenant")
+    if not rentals:
+        print("No rentals available. Please register a rental first.")
+        return
+    
+    print("Available rentals:")
+    for rental in rentals:
+        if rental['status'] == 'Vacant':
+            print(f"{rental['rental_no']} {rental['rental_type']} ({rental['no_of_rooms']} rooms)")
+    
+    rental_no = int(input("Enter rental number: "))
+    rental = find_rental(rental_no)
+    
+    if not rental or rental['status'] != 'Vacant':
+        print("Invalid or occupied rental number")
+        return
