@@ -14,7 +14,7 @@ def find_tenant(tenant_no):
             return tenant
     return None
 
-
+#we're registering the rental details and tenant details
 def register_rental():
     print("\nRegister New Rental Property")
     rental = {
@@ -46,3 +46,48 @@ def register_tenant():
     if not rental or rental['status'] != 'Vacant':
         print("Invalid or occupied rental number")
         return
+
+    tenant = {
+        
+        'tenant_name': input("Enter tenant name: "),
+        'contact': input("Enter contact number: "),
+        'gender': input("Enter gender (M/F/O): ").upper(),
+        'tenant_no': rental_no,
+        'dependants': int(input("Enter number of dependants: "))
+    }
+    tenants.append(tenant)
+    rental['status'] = 'Occupied'
+    print(f"Tenant {tenant['tenant_no']} registered successfully!")
+
+def record_payment():
+    print("\nRecord Payment")
+    
+    payment = {
+        
+        'pay_date': input("Enter payment date (YYYY-MM-DD): "),
+        'pay_month': int(input("Enter payment month (1-12): ")),
+        'pay_method': input("Payment method (Cash/Bank Transfer/Mobile Money): ").title(),
+        'amount': float(input("Enter amount: ")),
+        'tenant_no': input("Enter the tenant number: "),
+        'rental_no': int(input("Enter rental number: ")),
+        'receipt_no' : input("Enter the receipt number: ")
+    }
+    
+    payments.append(payment)
+    print(f"Payment recorded with receipt number {payment['receipt_no']}")
+    return payment
+
+def display_records():
+    print("\nRental Records:")
+    for rental in rentals:
+        print(f"{rental.get('rental_no')}: {rental.get('rental_type')}: {rental.get('status')}")
+    
+    print("\nTenant Records:")
+    for tenant in tenants:
+        print(f"{tenant['tenant_no']}: {tenant['tenant_name']} in {tenant['tenant_no']}")
+    
+    print("\nPayment Records:")
+    for payment in payments:
+        paid_payment = payment['pay_month'] * payment['amount']
+        print(f"Receipt number: {payment['receipt_no']}\nShs.{payment['amount']} paid on {payment['pay_date']} by {tenant['tenant_name']} for rental {payment['rental_no']}")
+        print(f"Shs.{paid_payment} paid for {payment['pay_month']} months.")
