@@ -1,11 +1,209 @@
 [
     {
-        "label": "rental",
+        "label": "register_tenant",
+        "kind": 2,
+        "importPath": "project",
+        "description": "project",
+        "peekOfCode": "def register_tenant():\n    tenant_name = input(\"Enter your name: \")\n    tenant_contact =input(f\"Enter your number: \")\n    room_number = input(f\"Enter room number (rental number): \")\n    for rental in rentals:\n        rental_found = False\n        if rental[\"rental_number\"] == room_number:\n            rental_found = True\n            if rental[\"status\"] == \"taken\":\n                print(\"room is already taken\")",
+        "detail": "project",
+        "documentation": {}
+    },
+    {
+        "label": "tenants",
         "kind": 5,
-        "importPath": "rental",
-        "description": "rental",
-        "peekOfCode": "rental = []\nwhile True: \n    person = input(\"Enter the rental number or type 'DONE' to finsih\")\n    lower()",
-        "detail": "rental",
+        "importPath": "project",
+        "description": "project",
+        "peekOfCode": "tenants = []\npayments = []\ndef register_tenant():\n    tenant_name = input(\"Enter your name: \")\n    tenant_contact =input(f\"Enter your number: \")\n    room_number = input(f\"Enter room number (rental number): \")\n    for rental in rentals:\n        rental_found = False\n        if rental[\"rental_number\"] == room_number:\n            rental_found = True",
+        "detail": "project",
+        "documentation": {}
+    },
+    {
+        "label": "payments",
+        "kind": 5,
+        "importPath": "project",
+        "description": "project",
+        "peekOfCode": "payments = []\ndef register_tenant():\n    tenant_name = input(\"Enter your name: \")\n    tenant_contact =input(f\"Enter your number: \")\n    room_number = input(f\"Enter room number (rental number): \")\n    for rental in rentals:\n        rental_found = False\n        if rental[\"rental_number\"] == room_number:\n            rental_found = True\n            if rental[\"status\"] == \"taken\":",
+        "detail": "project",
+        "documentation": {}
+    },
+    {
+        "label": "add_rental",
+        "kind": 2,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "def add_rental():\n    rental_number = input(\"Enter rental number: \")\n    rental_type = input(\"Enter the rental type: \")\n    number_of_rooms = input(\"Enter the number of rooms: \")\n    no_of_items = 3\n    if no_of_items < 3:\n        items = input(\"Enter the item name: \")\n    status = input(\"Enter the status of the room: \")\n    amount = int(input(\"Enter the amount to be paid: \"))\n    details = {",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "register_tenant",
+        "kind": 2,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "def register_tenant():\n    tenant = {'tenant_name': input(\"Enter tenant name: \") ,\n            'tenant_contact' : input(\"enter tenant contact\") ,\n            'gender' : input(\"enter the gender: \"),\n            'rental number' : input (\"enter rental number: \"),\n            'dependents' : int(input(\"enter dependents: \")),\n            }\n    tenants.append(tenant)\nfor rental in rentals:\n    print (f\"{rental.get('rental_number')} {rental.get('rental_type')} {rental.get('number_of_rooms')} {rental.get('items')} {rental.get('status')} {rental.get('amount')}\")",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "record_payment",
+        "kind": 2,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "def record_payment():\n    payment ={ 'reciept nuber' : input(\"enter the number: \"),\n            'date ' : input(\"enter date: \"),\n            'month' : input(\"enter month: \"),\n            'year' : input(\"enter year: \"),\n            'payment_method' : input(\"enter the payment method (cash only )\")          \n    }     \n    payments.append(payment)\ndef compute_amount():\n    number_of_months = int(input(\"enter the number of months to be rentaled : \"))",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "compute_amount",
+        "kind": 2,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "def compute_amount():\n    number_of_months = int(input(\"enter the number of months to be rentaled : \"))\ndef display_records():\n    print(\"\\nRental Records:\")\n    for rental in rentals:\n        print(f\"{rental.get('rental_no')}: \\t {rental.get('rental_type')}: \\t {rental.get('status')}\")\n    print(\"\\nTenant Records:\")\n    for tenant in tenants:\n        print(f\"{tenant['tenant_no']}: {tenant['tenant_name']} in {tenant['rental_no']}\")\n    print(\"\\nPayment Records:\")",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "display_records",
+        "kind": 2,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "def display_records():\n    print(\"\\nRental Records:\")\n    for rental in rentals:\n        print(f\"{rental.get('rental_no')}: \\t {rental.get('rental_type')}: \\t {rental.get('status')}\")\n    print(\"\\nTenant Records:\")\n    for tenant in tenants:\n        print(f\"{tenant['tenant_no']}: {tenant['tenant_name']} in {tenant['rental_no']}\")\n    print(\"\\nPayment Records:\")\n    for payment in payments:\n        print(f\"{payment['receipt_no']}: {payment['amount']} paid on {payment['pay_date']}\")",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "def main():\n    while True:\n        print(\"\\nRental Management System\")\n        print(\"1. Register Rental Property\")\n        print(\"2. Register Tenant\")\n        print(\"3. Record Payment\")\n        print(\"4. View All Records\")\n        print(\"5. Exit\")\n        choice = input(\"Enter your choice (1-5): \")\n        if choice == '1':",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "rentals",
+        "kind": 5,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "rentals = [\n    {\"rental_number\": \"R001\",\n    \"rental_type\": \"apartment\",\n    \"number_of_rooms\": 2,\n    \"items\": ['toilet', 'bathroom', 'sink'],\n    \"status\": \"taken\",\n    \"amount\": 400000},\n    {\"rental_number\": \"R002\",\n    \"rental_type\": \"apartment\",\n    \"number_of_rooms\": 3,",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "tenants",
+        "kind": 5,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "tenants = []\ndef register_tenant():\n    tenant = {'tenant_name': input(\"Enter tenant name: \") ,\n            'tenant_contact' : input(\"enter tenant contact\") ,\n            'gender' : input(\"enter the gender: \"),\n            'rental number' : input (\"enter rental number: \"),\n            'dependents' : int(input(\"enter dependents: \")),\n            }\n    tenants.append(tenant)\nfor rental in rentals:",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "payments",
+        "kind": 5,
+        "importPath": "rental_2",
+        "description": "rental_2",
+        "peekOfCode": "payments = []\ndef record_payment():\n    payment ={ 'reciept nuber' : input(\"enter the number: \"),\n            'date ' : input(\"enter date: \"),\n            'month' : input(\"enter month: \"),\n            'year' : input(\"enter year: \"),\n            'payment_method' : input(\"enter the payment method (cash only )\")          \n    }     \n    payments.append(payment)\ndef compute_amount():",
+        "detail": "rental_2",
+        "documentation": {}
+    },
+    {
+        "label": "generate_id",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def generate_id(r1, records):\n    return f\"{r1}{len(records) + 1:03d}\"\ndef find_rental(rental_no):\n    for rental in rentals:\n        if rental['rental_no'] == rental_no:\n            return rental\n    return None\ndef find_tenant(tenant_no):\n    for tenant in tenants:\n        if tenant['tenant_no'] == tenant_no:",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "find_rental",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def find_rental(rental_no):\n    for rental in rentals:\n        if rental['rental_no'] == rental_no:\n            return rental\n    return None\ndef find_tenant(tenant_no):\n    for tenant in tenants:\n        if tenant['tenant_no'] == tenant_no:\n            return tenant\n    return None",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "find_tenant",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def find_tenant(tenant_no):\n    for tenant in tenants:\n        if tenant['tenant_no'] == tenant_no:\n            return tenant\n    return None\n# Main functions\ndef register_rental():\n    print(\"\\nRegister New Rental Property\")\n    rental = {\n        'rental_no': generate_id('R', rentals),",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "register_rental",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def register_rental():\n    print(\"\\nRegister New Rental Property\")\n    rental = {\n        'rental_no': generate_id('R', rentals),\n        'rental_type': input(\"Enter rental type (Apartment/House/Room): \").capitalize(),\n        'no_of_rooms': int(input(\"Enter number of rooms: \")),\n        'has_toilet': input(\"Has toilet? (y/n): \").lower() == 'y',\n        'has_kitchen': input(\"Has kitchen? (y/n): \").lower() == 'y',\n        'water': input(\"Water source (Borehole/Municipal/Tank): \").capitalize(),\n        'status': 'Vacant'",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "register_tenant",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def register_tenant():\n    print(\"\\nRegister New Tenant\")\n    if not rentals:\n        print(\"No rentals available. Please register a rental first.\")\n        return\n    print(\"Available rentals:\")\n    for rental in rentals:\n        if rental['status'] == 'Vacant':\n            print(f\"{rental['rental_no']} - {rental['rental_type']} ({rental['no_of_rooms']} rooms)\")\n    rental_no = input(\"Enter rental number: \")",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "record_payment",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def record_payment():\n    print(\"\\nRecord Payment\")\n    if not tenants:\n        print(\"No tenants available.\")\n        return\n    print(\"Current tenants:\")\n    for tenant in tenants:\n        print(f\"{tenant['tenant_no']} - {tenant['tenant_name']}\")\n    tenant_no = input(\"Enter tenant number: \")\n    tenant = find_tenant(tenant_no)",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "display_records",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def display_records():\n    print(\"\\nRental Records:\")\n    for rental in rentals:\n        print(f\"{rental.get('rental_no')}: \\t {rental.get('rental_type')}: \\t {rental.get('status')}\")\n    print(\"\\nTenant Records:\")\n    for tenant in tenants:\n        print(f\"{tenant['tenant_no']}: {tenant['tenant_name']} in {tenant['rental_no']}\")\n    print(\"\\nPayment Records:\")\n    for payment in payments:\n        print(f\"{payment['receipt_no']}: {payment['amount']} paid on {payment['pay_date']}\")",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "def main():\n    while True:\n        print(\"\\nRental Management System\")\n        print(\"1. Register Rental Property\")\n        print(\"2. Register Tenant\")\n        print(\"3. Record Payment\")\n        print(\"4. View All Records\")\n        print(\"5. Exit\")\n        choice = input(\"Enter your choice (1-5): \")\n        if choice == '1':",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "rentals",
+        "kind": 5,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "rentals = []\ntenants = []\npayments = []\n# Helper functions\ndef generate_id(r1, records):\n    return f\"{r1}{len(records) + 1:03d}\"\ndef find_rental(rental_no):\n    for rental in rentals:\n        if rental['rental_no'] == rental_no:\n            return rental",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "tenants",
+        "kind": 5,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "tenants = []\npayments = []\n# Helper functions\ndef generate_id(r1, records):\n    return f\"{r1}{len(records) + 1:03d}\"\ndef find_rental(rental_no):\n    for rental in rentals:\n        if rental['rental_no'] == rental_no:\n            return rental\n    return None",
+        "detail": "renta_1l",
+        "documentation": {}
+    },
+    {
+        "label": "payments",
+        "kind": 5,
+        "importPath": "renta_1l",
+        "description": "renta_1l",
+        "peekOfCode": "payments = []\n# Helper functions\ndef generate_id(r1, records):\n    return f\"{r1}{len(records) + 1:03d}\"\ndef find_rental(rental_no):\n    for rental in rentals:\n        if rental['rental_no'] == rental_no:\n            return rental\n    return None\ndef find_tenant(tenant_no):",
+        "detail": "renta_1l",
         "documentation": {}
     }
 ]
