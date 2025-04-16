@@ -90,4 +90,33 @@ def display_records():
     for payment in payments:
         paid_payment = payment['pay_month'] * payment['amount']
         print(f"Receipt number: {payment['receipt_no']}\nShs.{payment['amount']} paid on {payment['pay_date']} by {tenant['tenant_name']} for rental {payment['rental_no']}")
-        print(f"Shs.{paid_payment} paid for {payment['pay_month']} months.")
+        print(f"Shs.{paid_payment} paid for {payment['pay_month']} months.") 
+        
+def main():
+    while True:
+        print("\nRental Management System")
+        print("1. Register Rental Property")
+        print("2. Register Tenant")
+        print("3. Record Payment")
+        print("4. View All Records")
+        print("5. Exit")
+        
+        choice = input("Enter your choice (1-5): ")
+        
+        if choice == '1':
+            register_rental()
+        elif choice == '2':
+            register_tenant()
+        elif choice == '3':
+            record_payment()
+        elif choice == '4':
+            display_records()
+        elif choice == '5':
+            print("Exiting system...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+#if __name__ == "__main__":
+main()
+
