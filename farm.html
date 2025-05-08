@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        /* Custom styles for the message box */
+        #message-box {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f0fdf4;
+            color: #15803d;
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid #16a34a;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        #message-box.show {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-inter">
+    <div class="flex h-screen">
+        <aside class="w-64 bg-green-600 text-white p-4">
+            <div class="logo text-2xl font-semibold mb-8">Farm Manager</div>
+            <nav>
+                <ul class="space-y-2">
+                    <li class="hover:bg-green-700 rounded-md p-2">
+                        <a href="#" class="flex items-center">
+                            <span class="mr-2">🌾</span> Dashboard
+                        </a>
+                    </li>
+                    <li class="hover:bg-green-700 rounded-md p-2">
+                        <a href="#" class="flex items-center">
+                            <span class="mr-2">🚜</span> Fields
+                        </a>
+                    </li>
+                    <li class="hover:bg-green-700 rounded-md p-2">
+                        <a href="#" class="flex items-center">
+                            <span class="mr-2">🌱</span> Crops
+                        </a>
+                    </li>
+                     <li class="hover:bg-green-700 rounded-md p-2">
+                        <a href="#" class="flex items-center">
+                            <span class="mr-2">🐮</span> Animals
+                        </a>
+                    </li>
+                    <li class="hover:bg-green-700 rounded-md p-2">
+                        <a href="#" class="flex items-center">
+                            <span class="mr-2">💧</span> Irrigation
+                        </a>
+                    </li>
+                    <li class="hover:bg-green-700 rounded-md p-2">
+                        <a href="#" class="flex items-center">
+                            <span class="mr-2">📊</span> Reports
+                        </a>
+                    </li>
+                    <li class="hover:bg-green-700 rounded-md p-2">
+                        <a href="#" class="flex items-center">
+                            <span class="mr-2">⚙️</span> Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 overflow-y-auto">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-semibold text-gray-800">Crop Management</h1>
+                <div class="flex space-x-2">
+                    <input type="text" placeholder="Search Crops..." class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-64 sm:text-sm border-gray-300 rounded-md" />
+                    <button id="add-crop-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:shadow-outline">
+                        Add Crop
+                    </button>
+                </div>
+            </div>
+
+            <div id="message-box" class=""></div>
+
+            <div class="bg-white shadow-md rounded-md overflow-x-auto mb-8">
+                <table class="min-w-full leading-normal shadow-md rounded-lg overflow-hidden">
+                    <thead class="bg-gray-200 text-gray-700">
+                        <tr>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Crop Name
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Variety
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Planting Date
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Harvest Date
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Maize
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Hybrid XYZ
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                2024-05-01
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                2024-09-01
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex space-x-2">
+                                    <button class="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Edit
+                                    </button>
+                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Beans
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Rosecoco
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                2024-06-01
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                2024-08-01
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex space-x-2">
+                                    <button class="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Edit
+                                    </button>
+                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-semibold text-gray-800">Animal Management</h1>
+                <div class="flex space-x-2">
+                    <input type="text" placeholder="Search Animals..." class="shadow-sm focus:ring-green-500 focus:border-green-500 block w-64 sm:text-sm border-gray-300 rounded-md" />
+                    <button id="add-animal-button" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:shadow-outline">
+                        Add Animal
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-md rounded-md overflow-x-auto">
+                <table class="min-w-full leading-normal shadow-md rounded-lg overflow-hidden">
+                    <thead class="bg-gray-200 text-gray-700">
+                        <tr>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Animal ID
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Species
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Breed
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Date of Birth
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                ANM001
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Cow
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Holstein
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                2022-01-15
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex space-x-2">
+                                    <button class="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Edit
+                                    </button>
+                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                ANM002
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Goat
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                Boer
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                2023-03-20
+                            </td>
+                            <td class="px-5 py-5 border-b border-gray-200 text-sm">
+                                <div class="flex space-x-2">
+                                    <button class="bg-yellow-300 hover:bg-yellow-400 text-gray-800 font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Edit
+                                    </button>
+                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md focus:outline-none focus:shadow-outline">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="add-crop-modal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+                                Add New Crop
+                            </h3>
+                            <form id="add-crop-form" class="mt-4 space-y-4">
+                                <div>
+                                    <label for="crop-name" class="block text-gray-700 text-sm font-bold mb-2">Crop Name</label>
+                                    <input type="text" id="crop-name" placeholder="Crop Name" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                                <div>
+                                    <label for="crop-variety" class="block text-gray-700 text-sm font-bold mb-2">Variety</label>
+                                    <input type="text" id="crop-variety" placeholder="Variety" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                                <div>
+                                    <label for="planting-date" class="block text-gray-700 text-sm font-bold mb-2">Planting Date</label>
+                                    <input type="date" id="planting-date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                                <div>
+                                    <label for="harvest-date" class="block text-gray-700 text-sm font-bold mb-2">Harvest Date</label>
+                                    <input type="date" id="harvest-date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="document.getElementById('add-crop-form').dispatchEvent(new Event('submit'))">
+                        Add Crop
+                    </button>
+                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm close-button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="add-animal-modal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" >
+                                Add New Animal
+                            </h3>
+                            <form id="add-animal-form" class="mt-4 space-y-4">
+                                <div>
+                                    <label for="animal-id" class="block text-gray-700 text-sm font-bold mb-2">Animal ID</label>
+                                    <input type="text" id="animal-id" placeholder="Animal ID" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                                <div>
+                                    <label for="animal-species" class="block text-gray-700 text-sm font-bold mb-2">Species</label>
+                                    <input type="text" id="animal-species" placeholder="Species" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                                <div>
+                                    <label for="animal-breed" class="block text-gray-700 text-sm font-bold mb-2">Breed</label>
+                                    <input type="text" id="animal-breed" placeholder="Breed" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                                <div>
+                                    <label for="animal-dob" class="block text-gray-700 text-sm font-bold mb-2">Date of Birth</label>
+                                    <input type="date" id="animal-dob" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="document.getElementById('add-animal-form').dispatchEvent(new Event('submit'))">
+                        Add Animal
+                    </button>
+                    <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm close-button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const addCropButton = document.getElementById('add-crop-button');
+        const addCropModal = document.getElementById('add-crop-modal');
+        const closeButtons = document.querySelectorAll('.close-button');
+        const addCropForm = document.getElementById('add-crop-form');
+        const messageBox = document.getElementById('message-box');
+
+        // Get the add animal button and modal
+        const addAnimalButton = document.getElementById('add-animal-button');
+        const addAnimalModal = document.getElementById('add-animal-modal');
+        const addAnimalForm = document.getElementById('add-animal-form');
+
+        function showMessage(message, type = 'success') {
+            messageBox.textContent = message;
+            messageBox.className = `fixed top-4 left-1/2 transform -translate-x-1/2 bg-${type === 'success' ? 'green' : 'red'}-100 text-${type === 'success' ? 'green' : 'red'}-700 border border-${type === 'success' ? 'green' : 'red'}-400 px-4 py-2 rounded shadow-md`;
+            messageBox.classList.add('show');
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        addCropButton.addEventListener('click', () => {
+            addCropModal.classList.remove('hidden');
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                addCropModal.classList.add('hidden');
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === addCropModal) {
+                addCropModal.classList.add('hidden');
+            }
+        })
+
+        addCropForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const cropName = document.getElementById('crop-name').value;
+            const cropVariety = document.getElementById('crop-variety').value;
+            const plantingDate = document.getElementById('planting-date').value;
+            const harvestDate = document.getElementById('harvest-date').value;
+
+            if (!cropName || !cropVariety || !plantingDate || !harvestDate) {
+                showMessage('Please fill in all fields.', 'error');
+                return;
+            }
+
+            // Here, you would typically send this data to a server
+            console.log({ cropName, cropVariety, plantingDate, harvestDate });
+
+            showMessage(`Crop "${cropName}" added successfully!`);
+            addCropModal.classList.add('hidden');
+            addCropForm.reset();
+
+            // In a real application, you would also update the table dynamically here
+            // For this example, we'll just reload the page to see the new data
+            // window.location.reload();
+        });
+
+        // Animal management functions
+        addAnimalButton.addEventListener('click', () => {
+            addAnimalModal.classList.remove('hidden');
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                addAnimalModal.classList.add('hidden');
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === addAnimalModal) {
+                addAnimalModal.classList.add('hidden');
+            }
+        })
+
+        addAnimalForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const animalId = document.getElementById('animal-id').value;
+            const animalSpecies = document.getElementById('animal-species').value;
+            const animalBreed = document.getElementById('animal-breed').value;
+            const animalDob = document.getElementById('animal-dob').value;
+
+            if (!animalId || !animalSpecies || !animalBreed || !animalDob) {
+                showMessage('Please fill in all fields.', 'error');
+                return;
+            }
+
+            // Here, you would typically send this data to a server
+            console.log({ animalId, animalSpecies, animalBreed, animalDob });
+
+            showMessage(`Animal "${animalId}" added successfully!`);
+            addAnimalModal.classList.add('hidden');
+            addAnimalForm.reset();
+            // window.location.reload();
+        });
+
+    </script>
+</body>
+</html>
+

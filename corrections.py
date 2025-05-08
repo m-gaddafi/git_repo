@@ -1,20 +1,9 @@
 
 
-rentals = [
-    {"rental_number": "R001",
-    "rental_type": "apartment",
-    "number_of_rooms": 2,
-    "items": ['toilet', 'bathroom', 'sink'],
-    "status": "taken",
-    "amount": 400000},
-    
-    {"rental_number": "R002",
-    "rental_type": "apartment",
-    "number_of_rooms": 3,
-    "items": ['toilet', 'bathroom', 'sink'],
-    "status": "not taken",
-    "amount": 450000},
-]
+
+
+rentals =[]
+
 tenants = []
 payments = []
 
@@ -32,13 +21,7 @@ def find_tenant(tenant_no):
 
 #we're registering the rental details and tenant details
 
-rental_no = int(input("Enter the rental number: "))
-rental_type = input("Enter rental type (Apartment/House): ").capitalize()
-no_of_rooms = int(input("Enter number of rooms: "))
-has_toilet = input("Has toilet? (y/n): ").lower() == 'y'
-has_kitchen = input("Has kitchen? (y/n): ").lower() == 'y'
-water = input("Water source (y/n): ").lower() =='y'
-status = 'Vacant'
+
 
 def register_rental(rental_no,rental_type,no_of_rooms,has_toilet,has_kitchen,water,status):
     print("\nRegister New Rental Property")
@@ -54,7 +37,7 @@ def register_rental(rental_no,rental_type,no_of_rooms,has_toilet,has_kitchen,wat
     rentals.append(rental)
     print(f"Rental {rental['rental_no']} registered successfully!")
 
-def register_tenant():
+def register_tenant(tenant_name,contact,gender,rental_no,depedants):
     print("\nRegister New Tenant")
     if not rentals:
         print("No rentals available. Please register a rental first.")
@@ -64,7 +47,7 @@ def register_tenant():
     for rental in rentals:
         if rental['status'] == 'Vacant':
             print(f"{rental['rental_no']} {rental['rental_type']} ({rental['no_of_rooms']} rooms)")
-    
+     
     rental_no = int(input("Enter rental number: "))
     rental = find_rental(rental_no)
     
@@ -74,28 +57,28 @@ def register_tenant():
 
     tenant = {
         
-        'tenant_name': input("Enter tenant name: "),
-        'contact': input("Enter contact number: "),
-        'gender': input("Enter gender (M/F): ").upper(),
+        'tenant_name': tenant_name,
+        'contact': contact,
+        'gender': gender,
         'tenant_no': rental_no,
-        'dependants': int(input("Enter number of dependants: "))
+        'dependants': depedants,
     }
     tenants.append(tenant)
     rental['status'] = 'Occupied'
     print(f"Tenant {tenant['tenant_no']} registered successfully!")
 
-def record_payment():
+def record_payment(pay_date,pay_month,pay_method,amount,tenant_no,rental_no,receipt_no):
     print("\nRecord Payment")
     
     payment = {
         
-        'pay_date': input("Enter payment date (YYYY-MM-DD): "),
-        'pay_month': int(input("Enter payment month (1-12): ")),
-        'pay_method': input("Payment method (Cash/Mobile Money): "),
-        'amount': float(input("Enter amount: ")),
-        'tenant_no': input("Enter the tenant number: "),
-        'rental_no': int(input("Enter rental number: ")),
-        'receipt_no' : input("Enter the receipt number: ")
+        'pay_date': pay_date,
+        'pay_month': pay_month,
+        'pay_method': pay_method,
+        'amount': amount,
+        'tenant_no': tenant_no,
+        'rental_no': rental_no,
+        'receipt_no' : receipt_no,
     }
     
     payments.append(payment)
@@ -129,11 +112,31 @@ def main():
         choice = input("Enter your choice (1-5): ")
         
         if choice == '1':
+            rental_no = int(input("Enter the rental number: "))
+            rental_type = input("Enter rental type (Apartment/House): ").capitalize()
+            no_of_rooms = int(input("Enter number of rooms: "))
+            has_toilet = input("Has toilet? (y/n): ").lower() == 'y'
+            has_kitchen = input("Has kitchen? (y/n): ").lower() == 'y'
+            water = input("Water source (y/n): ").lower() =='y'
+            status = 'Vacant'
             register_rental(rental_no,rental_type,no_of_rooms,has_toilet,has_kitchen,water,status)
         elif choice == '2':
-            register_tenant()
+            tenant_name = input("Enter tenant name: ")
+            contact = input("Enter contact number: ")
+            gender = input("Enter gender (M/F): ").upper()
+            tenant_no = rental_no
+            dependants = int(input("Enter number of dependants: "))
+            
+            register_tenant(tenant_name,contact,gender,tenant_no,dependants)
         elif choice == '3':
-            record_payment()
+            pay_date = input("Enter payment date (YYYY-MM-DD): ")
+            pay_month =  int(input("Enter payment month (1-12): "))
+            pay_method = input("Payment method (Cash/Mobile Money): ")
+            amount =  float(input("Enter amount: "))
+            tenant_no=input("Enter the tenant number: ")
+            rental_no=int(input("Enter rental number: "))
+            receipt_no =  input("Enter the receipt number: ")
+            record_payment(pay_date,pay_month,pay_method,amount,tenant_no,rental_no,receipt_no)
         elif choice == '4':
             display_records()
         elif choice == '5':
